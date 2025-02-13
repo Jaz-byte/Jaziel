@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine's Day Envelope</title>
+<style>
+body {
+  background-image: url('violet_flowers.jpg'); /* Replace with your flower image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden; /* Hide overflowing hearts */
+}
+
+.envelope {
+  width: 250px;
+  height: 180px;
+  perspective: 800px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.envelope .front, .envelope .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  backface-visibility: hidden;
+}
+
+.envelope .front {
+  background-color: #e6b8af;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.envelope .front::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('envelope_front.png'); /* Replace with your envelope image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+}
+
+.envelope .back {
+  background-color: #fff;
+  padding: 20px;
+  color: #333;
+  text-align: center;
+  transform: rotateX(180deg);
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.envelope .back p {
+  margin-bottom: 10px;
+}
+
+.envelope.opened .front {
+  transform: rotateX(-180deg);
+}
+
+.envelope.opened .back {
+  transform: rotateX(0deg);
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('heart.png'); /* Replace with your heart image */
+  background-size: cover;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(360deg); }
+  100% { transform: translateY(0) rotate(720deg); }
+}
+
+/* Position hearts randomly */
+.heart:nth-child(1) { top: 10%; left: 20%; }
+.heart:nth-child(2) { top: 30%; right: 10%; }
+.heart:nth-child(3) { top: 70%; left: 40%; }
+/* Add more hearts as needed */
+</style>
+</head>
+<body>
+
+<div class="envelope" onclick="this.classList.toggle('opened')">
+  <div class="front"></div>
+  <div class="back">
+    <p>HAPPY VALENTINES DAY ALTHEA.</p>
+    <p>Hope you enjoy the day :)</p>
+    <p>                                        -Jaziel</p>
+  </div>
+</div>
+
+<div class="heart"></div>
+<div class="heart"></div>
+<div class="heart"></div>
+
+</body>
+</html>
